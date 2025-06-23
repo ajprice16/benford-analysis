@@ -1,0 +1,40 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="benford_analysis",
+    version="0.1.0",
+    description="A toolkit for analyzing audio and MIDI files for Benford's Law compliance",
+    long_description=open("README.md").read(),
+    long_description_content_type="text/markdown",
+    author="Alex Price",
+    author_email="ajprice16@gmail.com",
+    url="https://github.com/ajprice16/benford-analysis",
+    packages=find_packages(),
+    install_requires=[
+        "numpy>=1.21.0",
+        "scipy>=1.7.0",
+        "librosa>=0.8.0",
+        "matplotlib>=3.4.0",
+        "pandas>=1.3.0",
+        "mido>=1.2.0",
+        "tqdm>=4.62.0",
+    ],
+    python_requires=">=3.7",
+    classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Topic :: Scientific/Engineering :: Mathematics",
+        "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    ],
+    keywords="benford audio midi analysis music",
+    project_urls={
+        "Bug Reports": "https://github.com/yourusername/benford-analysis/issues",
+        "Source": "https://github.com/yourusername/benford-analysis",
+    },
+)
