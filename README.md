@@ -5,4 +5,4 @@ A Python package for analyzing audio and MIDI files for compliance with Benford'
 ## Installation
 
 ```bash
-pip install git+https://github.com/yourusername/benford-analysis.git
+pip install git+https://github.com/ajprice16/benford-analysis.git

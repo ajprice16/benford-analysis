@@ -42,14 +42,16 @@ def parse_midi(file_path):
     return notes
 
 def analyze_midi_file(midi_path):
-    """
-    Full analysis pipeline for MIDI files with proper error handling.
-    Returns a pandas DataFrame of frequencies.
-    """
+    """Full analysis pipeline for MIDI files with proper error handling."""
     try:
         frequencies = parse_midi(midi_path)
-        print("Success")
+        if not frequencies:
+            print(f"Warning: No frequencies extracted from {midi_path}")
+            return None
+        
+        # Create DataFrame with explicit column name
         return pd.DataFrame(frequencies, columns=['frequency'])
+    
     except Exception as e:
         print(f"Error processing MIDI file {midi_path}: {str(e)}")
         return None
