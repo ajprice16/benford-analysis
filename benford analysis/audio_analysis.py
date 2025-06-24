@@ -35,4 +35,5 @@ def analyze_audio_file(audio_path, beat_fraction=1.0, top_n=100):
     """Full analysis pipeline for audio files."""
     n_fft = get_n_fft_from_tempo(audio_path, beat_fraction)
     freqs = extract_dominant_frequencies(audio_path, n_fft, top_n)
+    print("Success")
     return pd.DataFrame(freqs)
