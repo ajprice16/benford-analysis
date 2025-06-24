@@ -1,4 +1,4 @@
-from benford_analysis import (
+from __editable___benford_analysis_0_1_0_finder import (
     analyze_audio_file,
     analyze_midi_file,
     benford_combined_test,
