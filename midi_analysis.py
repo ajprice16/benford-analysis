@@ -18,7 +18,6 @@ def parse_midi(file_path):
         raise ValueError(f"Failed to load MIDI file {file_path}: {str(e)}")
 
     notes = []
-    note_active = defaultdict(int)  # Track active notes by pitch
     
     for msg in midi_file:
         # Skip meta messages and non-note messages
@@ -28,13 +27,7 @@ def parse_midi(file_path):
         # Handle note messages
         note = msg.note
         if msg.type == 'note_on' and msg.velocity > 0:
-            note_active[note] += 1
-        elif msg.type == 'note_off' or (msg.type == 'note_on' and msg.velocity == 0):
-            if note in note_active and note_active[note] > 0:
-                note_active[note] -= 1
-                if note_active[note] == 0:
-                    # Convert note to frequency when note ends
-                    notes.append(note_to_freq(note))
+            notes.append(note_to_freq(note))
     
     if not notes:
         raise ValueError(f"No valid notes found in {file_path}")
