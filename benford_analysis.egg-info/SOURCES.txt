@@ -1,11 +1,5 @@
 README.md
 setup.py
-benford analysis/__init__.py
-benford analysis/audio_analysis.py
-benford analysis/benford_stats.py
-benford analysis/midi_analysis.py
-benford analysis/plotting.py
-benford analysis/utils.py
 benford_analysis.egg-info/PKG-INFO
 benford_analysis.egg-info/SOURCES.txt
 benford_analysis.egg-info/dependency_links.txt

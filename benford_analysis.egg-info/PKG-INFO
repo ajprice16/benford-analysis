@@ -1,5 +1,5 @@
-Metadata-Version: 2.4
-Name: benford_analysis
+Metadata-Version: 2.1
+Name: benford-analysis
 Version: 0.1.0
 Summary: A toolkit for analyzing audio and MIDI files for Benford's Law compliance
 Home-page: https://github.com/ajprice16/benford-analysis
@@ -20,24 +20,6 @@ Classifier: Topic :: Scientific/Engineering :: Mathematics
 Classifier: Topic :: Multimedia :: Sound/Audio :: Analysis
 Requires-Python: >=3.7
 Description-Content-Type: text/markdown
-Requires-Dist: numpy>=1.21.0
-Requires-Dist: scipy>=1.7.0
-Requires-Dist: librosa>=0.8.0
-Requires-Dist: matplotlib>=3.4.0
-Requires-Dist: pandas>=1.3.0
-Requires-Dist: mido>=1.2.0
-Requires-Dist: tqdm>=4.62.0
-Dynamic: author
-Dynamic: author-email
-Dynamic: classifier
-Dynamic: description
-Dynamic: description-content-type
-Dynamic: home-page
-Dynamic: keywords
-Dynamic: project-url
-Dynamic: requires-dist
-Dynamic: requires-python
-Dynamic: summary
 
 # Benford Analysis Toolkit
 
