@@ -8,11 +8,12 @@ def benford_prob(d):
     return np.log10(1 + 1/d)
 
 def get_first_digit(x):
-    """Extract first significant digit from array of numbers."""
     x = np.asarray(x)
     mask = (x != 0) & ~np.isnan(x)
     x = np.abs(x[mask])
-    return np.floor(x / 10**np.floor(np.log10(x))).astype(int)
+    # Add small epsilon to avoid floating-point errors near powers of 10
+    eps = 1e-12 
+    return np.floor((x + eps) / 10**np.floor(np.log10(x + eps))).astype(int)
 
 def get_significand(x):
     """Extract significand (mantissa) from array of numbers."""
@@ -26,7 +27,7 @@ def z_transform(x, d):
     s = get_significand(x)
     return (10 * s) * ((10 * s) >= d) * ((10 * s) < d + 1)
 
-def benford_combined_test(data, B=1000, show_progress=False):
+def benford_combined_test(data, B=10000, show_progress=False):
     """Combined Pearson χ² and Hotelling test for Benford's Law."""
     DIGITS = np.arange(1, 10)
     C = np.log10(np.e)
@@ -47,7 +48,7 @@ def benford_combined_test(data, B=1000, show_progress=False):
     diff = z_bars - C
     q_stat = n * diff @ np.linalg.inv(sigma) @ diff
     
-    # Monte Carlo simulation
+    # Monte Carlo simulation - should be unique for each file
     def generate_benford_sample(n):
         return 10**uniform.rvs(size=n)
     
@@ -60,7 +61,7 @@ def benford_combined_test(data, B=1000, show_progress=False):
     
     hotelling_p = (np.sum(np.array(q_samples) >= q_stat) + 1) / (B + 1)
     
-    # Fisher's combined test
+    # Fisher's combined test - should use the actual calculated p-values
     fisher_stat = -2 * (np.log(chi2_p) + np.log(hotelling_p))
     combined_p = max(1 - chi2.cdf(fisher_stat, df=4), 1e-10)
     
